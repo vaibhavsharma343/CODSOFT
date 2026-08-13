@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-//  Student class
 class Student implements Serializable {
     private String name;
     private String rollNumber;
@@ -15,7 +14,6 @@ class Student implements Serializable {
         this.age = age;
     }
 
-    // Getters and Setters
     public String getName() { return name; }
     public String getRollNumber() { return rollNumber; }
     public String getGrade() { return grade; }
@@ -32,7 +30,6 @@ class Student implements Serializable {
     }
 }
 
-// StudentManagementSystem class
 class StudentManagementSystem {
     private List<Student> students;
     private static final String FILE_NAME = "students.txt";
@@ -42,7 +39,6 @@ class StudentManagementSystem {
         loadStudentsFromFile();
     }
 
-    // Add student
     public void addStudent(Student student) {
         students.add(student);
         saveStudentsToFile();
@@ -60,7 +56,6 @@ class StudentManagementSystem {
         return false;
     }
 
-    // Search for student
     public Student searchStudent(String rollNumber) {
         for (Student s : students) {
             if (s.getRollNumber().equalsIgnoreCase(rollNumber)) {
@@ -70,7 +65,6 @@ class StudentManagementSystem {
         return null;
     }
 
-    // Display all students
     public void displayAllStudents() {
         if (students.isEmpty()) {
             System.out.println("No students found.");
@@ -82,7 +76,6 @@ class StudentManagementSystem {
         }
     }
 
-    // Save students to file
     private void saveStudentsToFile() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.writeObject(students);
@@ -91,7 +84,6 @@ class StudentManagementSystem {
         }
     }
 
-    // Load students from file
     @SuppressWarnings("unchecked")
     private void loadStudentsFromFile() {
         File file = new File(FILE_NAME);
@@ -105,7 +97,6 @@ class StudentManagementSystem {
     }
 }
 
-//  Main class 
 public class StudentManagementSystems {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -127,7 +118,7 @@ public class StudentManagementSystems {
                 sc.next();
             }
             choice = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine(); 
 
             switch (choice) {
                 case 1 -> {
@@ -194,7 +185,6 @@ public class StudentManagementSystems {
         sc.close();
     }
 
-    // Helper: Validates integer age input
     private static int getValidAge(Scanner sc) {
         int age;
         while (true) {

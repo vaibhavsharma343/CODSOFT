@@ -5,10 +5,9 @@ public class CurrencyConverter {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Supported currencies
         String[] currencies = {"USD", "INR", "EUR", "GBP", "JPY"};
 
-        // Exchange rates relative to USD
+        // Exchange rates 
         double usdToInr = 83.20;
         double usdToEur = 0.93;
         double usdToGbp = 0.81;
@@ -17,15 +16,13 @@ public class CurrencyConverter {
         System.out.println("===== CURRENCY CONVERTER =====");
         System.out.println("Supported currencies: USD, INR, EUR, GBP, JPY");
 
-        // Input base currency
+    
         System.out.print("Enter base currency: ");
         String base = sc.next().trim().toUpperCase();
 
-        // Input target currency
         System.out.print("Enter target currency: ");
         String target = sc.next().trim().toUpperCase();
 
-        // Check if both currencies are supported
         if (!isSupported(base, currencies)) {
             System.out.println("Unsupported base currency!");
             sc.close();
@@ -38,7 +35,7 @@ public class CurrencyConverter {
             return;
         }
 
-        // Input amount with error handling
+        //  error handling
         System.out.print("Enter amount to convert: ");
         double amount;
         try {
@@ -81,7 +78,6 @@ public class CurrencyConverter {
         sc.close();
     }
 
-    // Helper method to check if currency is supported
     public static boolean isSupported(String currency, String[] list) {
         for (String curr : list) {
             if (curr.equalsIgnoreCase(currency)) {
